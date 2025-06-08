@@ -9,6 +9,7 @@ import prjSetup from "./scenes/2-project-setup/prj-setup";
 import {tags as t} from "@lezer/highlight";
 import helloWorld from "./scenes/3-hello-world/hello-world";
 import errorsAsVals from "./scenes/4-errors-as-values/errors-as-vals";
+import goroutines from "./scenes/5-goroutines/goroutines";
 
 const MyStyle = HighlightStyle.define([
   { tag: [t.name, t.deleted, t.character, t.macroName], color: '#c0caf5' },
@@ -40,6 +41,6 @@ const Highlighter = new LezerHighlighter(
 Code.defaultHighlighter = Highlighter;
 
 export default makeProject({
-  scenes: [prjSetup, helloWorld, errorsAsVals],
+  scenes: [prjSetup, helloWorld, errorsAsVals, goroutines],
   background: '#141414',
 });

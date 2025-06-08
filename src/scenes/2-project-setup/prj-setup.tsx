@@ -12,14 +12,16 @@ export default makeScene2D(function* (view) {
                 fontSize={28}
                 offsetX={-1}
                 x={-400}
-                code={`cd $GOPATH`}
+                code={`cd ~/documents`}
             />
         </Layout>
     )
 
-    yield* code().code.append(`\nmkdir src && cd src`, 0.8)
+    yield* waitFor(1)
 
     yield* code().code.append(`\nmkdir lighting-talk && cd lighting-talk`, 0.6)
+
+    yield* waitFor(1)
 
     yield* code().code.append(`\ntouch hello.go`, 0.6)
 
