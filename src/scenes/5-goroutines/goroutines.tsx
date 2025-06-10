@@ -12,29 +12,21 @@ export default makeScene2D(function* (view) {
                 fontSize={28}
                 offsetX={-1}
                 x={-600}
-                code={`package main
+                code={`\
+package main
 
 import (
-    "fmt"
-    "math/rand"
+    "time"
 )
 
 func main() {
-    fmt.Println("Hello, World!")
-    crackPassword()
+    crackPassword("202cb962ac59075b964b07152d234b70")
 }
 
-func crackPassword() {
-    const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-    seededRand := rand.New(rand.NewSource(123)) // Seed
-    for i := 0; i < 500; i++ {
-        randomBytes := make([]byte, 10)
-        for i := range randomBytes {
-            randomBytes[i] = charset[seededRand.Intn(len(charset))]
-        }
-        fmt.Println(string(randomBytes))
-    }
-}            
+func crackPassword(hash string) {
+    time.Sleep(50)
+}
+  
                 `}
             />
         </Layout>

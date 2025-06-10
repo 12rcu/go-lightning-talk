@@ -26,4 +26,8 @@ export default makeScene2D(function* (view) {
     yield* code().code.append(`\ntouch hello.go`, 0.6)
 
     yield* waitFor(1.2)
+
+    yield* code().code.append(`\ngo mod init lighting-talk/sample`, 0.6)
+
+    yield* waitFor(1.2)
 });
