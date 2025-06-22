@@ -10,6 +10,9 @@ import {tags as t} from "@lezer/highlight";
 import helloWorld from "./scenes/3-hello-world/hello-world";
 import errorsAsVals from "./scenes/4-errors-as-values/errors-as-vals";
 import goroutines from "./scenes/5-goroutines/goroutines";
+import channels from "./scenes/6-channels/channels";
+import simpleLock from "./scenes/7-channels/simple-lock";
+import bufferedChannels from "./scenes/8-buffered-channels/buffered-channels";
 
 const MyStyle = HighlightStyle.define([
   { tag: [t.name, t.deleted, t.character, t.macroName], color: '#c0caf5' },
@@ -41,6 +44,6 @@ const Highlighter = new LezerHighlighter(
 Code.defaultHighlighter = Highlighter;
 
 export default makeProject({
-  scenes: [prjSetup, helloWorld, errorsAsVals, goroutines],
-  background: '#141414',
+  scenes: [prjSetup, helloWorld, errorsAsVals, goroutines, channels, simpleLock, bufferedChannels],
+  background: '#0e0e0e',
 });

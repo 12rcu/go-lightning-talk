@@ -14,20 +14,29 @@ export default makeScene2D(function* (view) {
                     offsetX={-1}
                     x={-400}
                     code={`\
-package main
-
-import (
-    "time"
-)
-
 func main() {
-    heavyTask("abc")
+    ci := make(chan int, 100)
+    go work(ci)
+    fmt.Println("Start some important work")
+    time.Sleep(3 * time.Second) //some work
+    fmt.Println("Some important work finished")
+    for {
+        value := <-ci
+        fmt.Printf("Accept value %d\\n", value)
+        
+        if value == -1 {
+            break
+        }
+    }
 }
 
-func heavyTask(hash string) {
-    time.Sleep(50)
+func work(results chan<- int) {
+    for i := 1; i <= 5; i++ {
+        time.Sleep(1 * time.Second)
+        results <- i
+    }
+    results <- -1
 }
-  
                 `}
                 />
             </Rect>
@@ -46,7 +55,7 @@ func heavyTask(hash string) {
 
     yield* waitFor(4)
 
-    yield* code().code.insert([7,4], `go `, 0.8)
+    yield* code().code.insert([7,4], ``, 0.8)
 
     yield* waitFor(1)
 });
