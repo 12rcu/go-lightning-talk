@@ -15,6 +15,7 @@ import channels from "./scenes/6-channels/channels?scene";
 import simpleLock from "./scenes/7-channels/simple-lock?scene";
 import bufferedChannels from "./scenes/8-buffered-channels/buffered-channels?scene";
 import intro from "./scenes/1-intro/intro?scene";
+import channelDirections from "./scenes/9-channel-directions/channel-directions?scene";
 
 const MyStyle = HighlightStyle.define([
   { tag: [t.name, t.deleted, t.character, t.macroName], color: '#c0caf5' },
@@ -46,7 +47,7 @@ const Highlighter = new LezerHighlighter(
 Code.defaultHighlighter = Highlighter;
 
 export default makeProject({
-  scenes: [intro, prjSetup, helloWorld, goroutines, channels, simpleLock, bufferedChannels],
+  scenes: [intro, prjSetup, helloWorld, goroutines, channels, bufferedChannels, channelDirections],
   background: '#0e0e0e',
   audio: audio
 });

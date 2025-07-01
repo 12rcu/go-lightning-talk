@@ -1,15 +1,18 @@
-import {makeScene2D, Code, Layout, Txt, word, Rect} from '@motion-canvas/2d';
+import {makeScene2D, Code, Layout, Txt, word, Rect, Img} from '@motion-canvas/2d';
 import {createRef, waitFor, waitUntil} from "@motion-canvas/core";
+import goConc from "./goConc.drawio.png"
 
 export default makeScene2D(function* (view) {
     const code = createRef<Code>()
     const topic = createRef<Txt>()
     const slogan = createRef<Txt>()
+    const imgRef = createRef<Img>()
 
     view.add(
         <Layout direction={'column'} width={1200} layout gap={15}>
             <Txt fill={"#fff"} ref={topic}></Txt>
             <Txt fill={"#fff"} ref={slogan} fontSize={26}></Txt>
+            <Img ref={imgRef} src={goConc}></Img>
             <Code
                 ref={code}
                 fontSize={28}
@@ -21,6 +24,7 @@ export default makeScene2D(function* (view) {
         </Layout>
     )
 
+    imgRef().scale(0)
     topic().text("Channels")
 
     yield* waitFor(14)
@@ -60,6 +64,12 @@ func someWork() {
     yield* waitFor(8)
 
     yield* code().code.insert([2, 24], `\n\n    //do some other suff\n\n    <-ci //wait\n`, 0.8)
+
+    yield* waitFor(15)
+
+    topic().text("Channels")
+    code().code.reset()
+    imgRef().scale(1)
 
     yield* waitFor(15)
 });
