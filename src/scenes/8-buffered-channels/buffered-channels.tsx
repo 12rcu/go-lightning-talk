@@ -57,5 +57,5 @@ func work(results chan<- int) {
 
     yield* code().code.insert([7,4], ``, 0.8)
 
-    yield* waitFor(1)
+    yield* waitFor(60*13)
 });

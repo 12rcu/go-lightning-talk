@@ -1,4 +1,5 @@
 import {makeProject} from '@motion-canvas/core';
+import audio from './assets/voice.mp3';
 
 import {Code, LezerHighlighter} from "@motion-canvas/2d";
 
@@ -13,6 +14,7 @@ import goroutines from "./scenes/5-goroutines/goroutines";
 import channels from "./scenes/6-channels/channels";
 import simpleLock from "./scenes/7-channels/simple-lock";
 import bufferedChannels from "./scenes/8-buffered-channels/buffered-channels";
+import intro from "./scenes/1-intro/intro";
 
 const MyStyle = HighlightStyle.define([
   { tag: [t.name, t.deleted, t.character, t.macroName], color: '#c0caf5' },
@@ -44,6 +46,7 @@ const Highlighter = new LezerHighlighter(
 Code.defaultHighlighter = Highlighter;
 
 export default makeProject({
-  scenes: [prjSetup, helloWorld, errorsAsVals, goroutines, channels, simpleLock, bufferedChannels],
+  scenes: [intro, prjSetup, helloWorld, goroutines, channels, simpleLock, bufferedChannels],
   background: '#0e0e0e',
+  audio: audio
 });
