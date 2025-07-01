@@ -1,5 +1,18 @@
 {
   "version": 0,
-  "timeEvents": [],
+  "timeEvents": [
+    {
+      "name": "main_expl_finished",
+      "targetTime": 37.94514465384329
+    },
+    {
+      "name": "go_ev",
+      "targetTime": 53.334697501580465
+    },
+    {
+      "name": "go_fin",
+      "targetTime": 75.99982968058093
+    }
+  ],
   "seed": 3014280529
 }

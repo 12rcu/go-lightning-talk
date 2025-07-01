@@ -1,52 +1,47 @@
 import {makeScene2D, Code, Layout, Txt, word, Rect} from '@motion-canvas/2d';
-import {createRef, waitFor} from "@motion-canvas/core";
+import {createRef, waitFor, waitUntil} from "@motion-canvas/core";
 
 export default makeScene2D(function* (view) {
     const code = createRef<Code>()
     const terminal = createRef<Code>()
 
     view.add(
-        <Layout direction={'column'} width={1200} layout gap={15}>
-            <Rect width={1200} height={800} fill={'#1a1a1a'} radius={10} layout padding={20}>
-                <Code
-                    ref={code}
-                    fontSize={28}
-                    offsetX={-1}
-                    x={-400}
-                    code={`\
+        <Code
+            ref={code}
+            fontSize={28}
+            offsetX={-1}
+            x={-400}
+            code={`\
 package main
 
-import (
-    "time"
-)
-
 func main() {
-    heavyTask("abc")
-}
 
-func heavyTask(hash string) {
-    time.Sleep(50)
 }
-  
                 `}
-                />
-            </Rect>
-            <Rect width={1200} height={100} fill={'#1a1a1a'} radius={10} layout padding={20}>
-                <Code
-                    ref={terminal}
-                    fontSize={28}
-                    offsetX={-1}
-                    x={-400}
-                    code={`>_ shell
-                    `}
-                />
-            </Rect>
-        </Layout>
+        />
     )
 
-    yield* waitFor(4)
+    yield * waitUntil('main_expl_finished');
 
-    yield* code().code.insert([7,4], `go `, 0.8)
+    yield* code().code.insert([5,2], `\nfunc task() {\n\n}`, 0.8)
 
     yield* waitFor(1)
+
+    yield* code().code.insert([1,0], `\nimport("time")\n`, 0.8)
+
+    yield* code().code.insert([9,0], `    time.Sleep(6 * time.Second)`, 0.8)
+
+    yield* waitFor(1)
+
+    yield* code().code.insert([5,0], `    task()`, 0.8)
+
+    yield * waitUntil('go_ev');
+
+    yield* code().code.insert([5,4], `go `, 0.8)
+
+    yield* waitFor(8)
+
+    yield* code().code.insert([5,13], `\n    go func() {\n        time.Sleep(2 * time.Second)\n    }() //- must call the function`, 0.8)
+
+    yield * waitUntil('go_fin');
 });
