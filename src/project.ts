@@ -6,15 +6,15 @@ import {Code, LezerHighlighter} from "@motion-canvas/2d";
 import {HighlightStyle} from '@codemirror/language';
 
 import {parser} from '@lezer/go';
-import prjSetup from "./scenes/2-project-setup/prj-setup";
+import prjSetup from "./scenes/2-project-setup/prj-setup?scene";
 import {tags as t} from "@lezer/highlight";
-import helloWorld from "./scenes/3-hello-world/hello-world";
+import helloWorld from "./scenes/3-hello-world/hello-world?scene";
 import errorsAsVals from "./scenes/4-errors-as-values/errors-as-vals";
-import goroutines from "./scenes/5-goroutines/goroutines";
-import channels from "./scenes/6-channels/channels";
-import simpleLock from "./scenes/7-channels/simple-lock";
-import bufferedChannels from "./scenes/8-buffered-channels/buffered-channels";
-import intro from "./scenes/1-intro/intro";
+import goroutines from "./scenes/5-goroutines/goroutines?scene";
+import channels from "./scenes/6-channels/channels?scene";
+import simpleLock from "./scenes/7-channels/simple-lock?scene";
+import bufferedChannels from "./scenes/8-buffered-channels/buffered-channels?scene";
+import intro from "./scenes/1-intro/intro?scene";
 
 const MyStyle = HighlightStyle.define([
   { tag: [t.name, t.deleted, t.character, t.macroName], color: '#c0caf5' },

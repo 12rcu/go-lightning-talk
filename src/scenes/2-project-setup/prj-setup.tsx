@@ -20,21 +20,17 @@ export default makeScene2D(function* (view) {
         </Layout>
     )
 
-    yield* waitFor(1)
-
-    yield* code().code.append(`\n>cd ~/documents`, 0.6)
-
-    yield* waitFor(1)
+    yield* waitFor(1.5)
 
     yield* code().code.append(`\n>mkdir lighting-talk && cd lighting-talk`, 0.6)
 
     yield* waitFor(1)
 
-    yield* code().code.append(`\n>touch hello.go`, 0.6)
+    yield* code().code.append(`\n>go mod init lighting-talk/sample`, 0.6)
 
     yield* waitFor(1.2)
 
-    yield* code().code.append(`\n>go mod init lighting-talk/sample`, 0.6)
+    yield* code().code.append(`\n>touch hello.go`, 0.6)
 
     yield* waitFor(1.2)
 });

@@ -1,0 +1,14 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "entry_point_expl",
+      "targetTime": 9.725831214421202
+    },
+    {
+      "name": "fmt_expl",
+      "targetTime": 21.51457803605301
+    }
+  ],
+  "seed": 3743783584
+}
