@@ -1,4 +1,4 @@
-import {Code, Layout, makeScene2D} from '@motion-canvas/2d';
+import {Code, Layout, lines, makeScene2D} from '@motion-canvas/2d';
 import {createRef, DEFAULT, waitFor} from "@motion-canvas/core";
 
 export default makeScene2D(function* (view) {
@@ -24,6 +24,24 @@ msg2 := <- c2`, 0.6)
 
     yield* waitFor(5)
 
+    yield* code().code.replace(code().findAllRanges(`msg1 := <- c1 //blocks c2
+msg2 := <- c2`)[0], `select {
+case msg1 := <- c1: 
+    fmt.Println(msg1)
+case msg2 := <- c2: 
+    fmt.Println(msg2)
+}`, 0.8)
 
-    yield* waitFor(30)
+    yield* waitFor(5)
+
+    yield* code().code.replace(lines(3, 8), `for {
+    select {
+    case msg1 := <- c1: 
+        fmt.Println(msg1)
+    case msg2 := <- c2: 
+        fmt.Println(msg2)
+    }
+}`, 0.8)
+
+    yield* waitFor(10)
 });
