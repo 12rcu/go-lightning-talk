@@ -1,5 +1,5 @@
-import {Code, Layout, lines, makeScene2D} from '@motion-canvas/2d';
-import {createRef, DEFAULT, waitFor} from "@motion-canvas/core";
+import {Code, Layout, makeScene2D} from '@motion-canvas/2d';
+import {createRef, waitFor} from "@motion-canvas/core";
 
 export default makeScene2D(function* (view) {
     const code = createRef<Code>()
@@ -16,15 +16,15 @@ export default makeScene2D(function* (view) {
         </Layout>
     )
 
-    yield* waitFor(5)
+    yield* waitFor(15)
 
     yield* code().code.append(`\nclose(c1)`, 0.6)
 
-    yield* waitFor(5)
+    yield* waitFor(15)
 
     yield* code().code.append(`\nmsg, ok := <- c1`, 0.6)
 
-    yield* waitFor(5)
+    yield* waitFor(18)
 
     yield* code().code.append(`\nif !ok {
     return
@@ -34,5 +34,5 @@ export default makeScene2D(function* (view) {
 
     yield* code().code.append(`\nfmt.Println(msg)`, 0.6)
 
-    yield* waitFor(10)
+    yield* waitFor(7)
 });

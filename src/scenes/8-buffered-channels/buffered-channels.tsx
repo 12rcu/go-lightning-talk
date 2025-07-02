@@ -1,5 +1,5 @@
-import {makeScene2D, Code, Layout, Txt, word, Rect, Img} from '@motion-canvas/2d';
-import {createRef, waitFor} from "@motion-canvas/core";
+import {makeScene2D, Code, Layout, Img} from '@motion-canvas/2d';
+import {createRef, waitFor, waitUntil} from "@motion-canvas/core";
 import goConc2 from './goConc2.drawio.png'
 
 export default makeScene2D(function* (view) {
@@ -32,5 +32,5 @@ ci := make(chan int)
     code().code.reset()
     imgRef().scale(1)
 
-    yield* waitFor(30)
+    yield* waitUntil('buff_fin');
 });

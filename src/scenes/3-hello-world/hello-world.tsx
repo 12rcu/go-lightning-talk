@@ -1,4 +1,4 @@
-import {makeScene2D, Code, Layout, Txt, word, Rect} from '@motion-canvas/2d';
+import {makeScene2D, Code, Layout, word, Rect} from '@motion-canvas/2d';
 import {all, createRef, waitFor, waitUntil} from "@motion-canvas/core";
 
 export default makeScene2D(function* (view) {

@@ -1,5 +1,5 @@
-import {makeScene2D, Code, Layout, Txt, word, Rect, Img} from '@motion-canvas/2d';
-import {createRef, waitFor, waitUntil} from "@motion-canvas/core";
+import {makeScene2D, Code, Layout, Txt, Img, lines} from '@motion-canvas/2d';
+import {all, createRef, waitFor, waitUntil} from "@motion-canvas/core";
 import goConc from "./goConc.drawio.png"
 
 export default makeScene2D(function* (view) {
@@ -10,8 +10,8 @@ export default makeScene2D(function* (view) {
 
     view.add(
         <Layout direction={'column'} width={1200} layout gap={15}>
-            <Txt fill={"#fff"} ref={topic}></Txt>
-            <Txt fill={"#fff"} ref={slogan} fontSize={26}></Txt>
+            <Txt fill={"#fff"} ref={topic}>Channels</Txt>
+            <Txt fill={"#fff"} ref={slogan} fontSize={26}>Do not communicate by sharing memory; instead, share memory by communicating.</Txt>
             <Img ref={imgRef} src={goConc}></Img>
             <Code
                 ref={code}
@@ -24,17 +24,20 @@ export default makeScene2D(function* (view) {
         </Layout>
     )
 
-    imgRef().scale(0)
-    topic().text("Channels")
+    yield* all(
+        imgRef().scale(0, 0),
+    )
 
     yield* waitFor(14)
 
-    yield* slogan().text("Do not communicate by sharing memory; instead, share memory by communicating.", 0.8)
+    //yield* slogan().text("Do not communicate by sharing memory; instead, share memory by communicating.", 0.8)
 
-    yield * waitUntil('yapping');
+    yield* waitUntil('yapping');
 
-    yield* slogan().text("")
-    topic().text("")
+    //yield* all(
+    //    slogan().text("", 0),
+    //    topic().text("", 0)
+    //)
 
     yield* code().code.insert([0, 0], `func main() {
 
@@ -54,8 +57,10 @@ func someWork() {
 
     yield* waitFor(8)
 
-    yield* code().code.insert([2, 16], `ci`, 0.8)
-    yield* code().code.insert([5, 14], `ci chan int`, 0.8)
+    yield* all(
+        code().code.insert([2, 16], `ci`, 0.8),
+        code().code.insert([5, 14], `ci chan int`, 0.8),
+    )
 
     yield* waitFor(5)
 
@@ -67,9 +72,12 @@ func someWork() {
 
     yield* waitFor(15)
 
-    topic().text("Channels")
-    code().code.reset()
-    imgRef().scale(1)
+    //yield* topic().text("Channels", 0.6)
 
-    yield* waitFor(15)
+    yield* all(
+        code().code.remove(lines(0, 12), 0),
+        imgRef().scale(1, 0),
+    )
+
+    yield* waitUntil('expl_fin');
 });

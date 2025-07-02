@@ -1,5 +1,5 @@
 import {Code, Layout, lines, makeScene2D} from '@motion-canvas/2d';
-import {createRef, DEFAULT, waitFor} from "@motion-canvas/core";
+import {createRef, waitFor, waitUntil} from "@motion-canvas/core";
 
 export default makeScene2D(function* (view) {
     const code = createRef<Code>()
@@ -17,12 +17,12 @@ c2 := make(chan string)`}
         </Layout>
     )
 
-    yield* waitFor(5)
+    yield* waitUntil('yapping');
 
     yield* code().code.append(`\n \nmsg1 := <- c1 //blocks c2
 msg2 := <- c2`, 0.6)
 
-    yield* waitFor(5)
+    yield* waitFor(9)
 
     yield* code().code.replace(code().findAllRanges(`msg1 := <- c1 //blocks c2
 msg2 := <- c2`)[0], `select {
@@ -32,7 +32,7 @@ case msg2 := <- c2:
     fmt.Println(msg2)
 }`, 0.8)
 
-    yield* waitFor(5)
+    yield* waitFor(52)
 
     yield* code().code.replace(lines(3, 8), `for {
     select {
@@ -43,5 +43,5 @@ case msg2 := <- c2:
     }
 }`, 0.8)
 
-    yield* waitFor(10)
+    yield* waitFor(6)
 });

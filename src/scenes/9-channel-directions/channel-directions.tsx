@@ -3,8 +3,6 @@ import {createRef, DEFAULT, waitFor} from "@motion-canvas/core";
 
 export default makeScene2D(function* (view) {
     const code = createRef<Code>()
-    const terminal = createRef<Code>()
-
     view.add(
         <Layout direction={'column'} width={1200} layout gap={15}>
             <Code
@@ -30,7 +28,7 @@ export default makeScene2D(function* (view) {
     yield* code().code.insert([1, 37], `\n    asyncWork(msgChan)`, 0.8)
     yield* code().code.insert([5, 15], `msgChan chan string`, 0.8)
 
-    yield* waitFor(4)
+    yield* waitFor(11)
 
     yield* code().code.insert([5, 27], ` <-`, 0.8)
 
@@ -42,13 +40,17 @@ export default makeScene2D(function* (view) {
 
     yield* code().selection(DEFAULT, 0.8)
 
+    yield* waitFor(3)
+
     yield* code().code.replace(code().findAllRanges("chan <- string")[0], `<- chan string`, 0.8)
+
+    yield* waitFor(2)
 
     yield* code().selection(code().findAllRanges("<- chan string"), 0.8)
 
-    yield* waitFor(10)
+    yield* waitFor(5)
 
     yield* code().selection(DEFAULT, 0.8)
 
-    yield* waitFor(30)
+    yield* waitFor(2)
 });

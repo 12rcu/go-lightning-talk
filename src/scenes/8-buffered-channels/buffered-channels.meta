@@ -1,5 +1,10 @@
 {
   "version": 0,
-  "timeEvents": [],
+  "timeEvents": [
+    {
+      "name": "buff_fin",
+      "targetTime": 45.274346038512064
+    }
+  ],
   "seed": 1149129722
 }
