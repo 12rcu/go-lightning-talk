@@ -1,5 +1,5 @@
 import {makeProject} from '@motion-canvas/core';
-import audio from './assets/shortend_voice.mp3';
+import audio from './assets/voice_3.mp3';
 
 import {Code, LezerHighlighter} from "@motion-canvas/2d";
 
@@ -54,7 +54,7 @@ export default makeProject({
         intro,
         prjSetup,
         helloWorld,
-        goroutines,
+        //goroutines,
         channels,
         channelsBlocking,
         bufferedChannels,

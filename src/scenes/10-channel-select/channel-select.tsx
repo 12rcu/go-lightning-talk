@@ -1,4 +1,4 @@
-import {Code, Layout, lines, makeScene2D} from '@motion-canvas/2d';
+import {Code, Layout, lines, makeScene2D, Txt} from '@motion-canvas/2d';
 import {createRef, waitFor, waitUntil} from "@motion-canvas/core";
 
 export default makeScene2D(function* (view) {
@@ -6,6 +6,7 @@ export default makeScene2D(function* (view) {
 
     view.add(
         <Layout direction={'column'} width={1200} layout gap={15}>
+            <Txt fill={"#fff"} fontSize={32}>Select</Txt>
             <Code
                 ref={code}
                 fontSize={28}

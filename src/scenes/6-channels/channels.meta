@@ -3,11 +3,11 @@
   "timeEvents": [
     {
       "name": "yapping",
-      "targetTime": 71.07720082815773
+      "targetTime": 59.1949131866803
     },
     {
       "name": "expl_fin",
-      "targetTime": 169.45667559323206
+      "targetTime": 159.07674615929784
     }
   ],
   "seed": 613272772

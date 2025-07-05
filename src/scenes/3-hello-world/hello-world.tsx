@@ -62,5 +62,5 @@ export default makeScene2D(function* (view) {
         x--
     }\n`, 0.8)
 
-    yield* waitFor(6)
+    yield* waitFor(3)
 });

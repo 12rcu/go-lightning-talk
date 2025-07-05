@@ -26,18 +26,19 @@ export default makeScene2D(function* (view) {
 
     yield* all(
         imgRef().scale(0, 0),
+        slogan().text("", 0)
     )
 
-    yield* waitFor(14)
+    yield* waitFor(4)
 
-    //yield* slogan().text("Do not communicate by sharing memory; instead, share memory by communicating.", 0.8)
+    yield* slogan().text("Do not communicate by sharing memory; instead, share memory by communicating.", 0.8)
 
     yield* waitUntil('yapping');
 
-    //yield* all(
-    //    slogan().text("", 0),
-    //    topic().text("", 0)
-    //)
+    yield* all(
+        slogan().text("", 0),
+        topic().text("", 0)
+    )
 
     yield* code().code.insert([0, 0], `func main() {
 
