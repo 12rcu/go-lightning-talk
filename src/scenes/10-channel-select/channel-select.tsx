@@ -44,5 +44,5 @@ case msg2 := <- c2:
     }
 }`, 0.8)
 
-    yield* waitFor(6)
+    yield* waitFor(5)
 });

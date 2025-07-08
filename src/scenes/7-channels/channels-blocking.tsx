@@ -48,14 +48,14 @@ func someWork(ci chan int) {
 
     yield* all(
         code().code.insert([8, 28], `\n    time.Sleep(5 * time.Second)`, 0.6),
-        code().code.insert([5, 18], `  //blocked by sleep`, 0.6),
+        code().code.insert([4, 18], `  //blocked by sleep\n`, 0.6),
     )
 
 
     yield* waitFor(11)
 
     yield* all(
-        code().code.insert([4, 17], `\n    time.Sleep(5 * time.Second)`, 0.6),
+        code().code.insert([4, 38], `\n    time.Sleep(5 * time.Second)`, 0.6),
         code().code.insert([11, 11], `  //blocked by sleep`, 0.6),
     )
 

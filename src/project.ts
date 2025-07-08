@@ -1,5 +1,5 @@
 import {makeProject} from '@motion-canvas/core';
-import audio from './assets/voice_3.mp3';
+import audio from './assets/voice_transitions.mp3';
 
 import {Code, LezerHighlighter} from "@motion-canvas/2d";
 
@@ -9,7 +9,6 @@ import {parser} from '@lezer/go';
 import prjSetup from "./scenes/2-project-setup/prj-setup?scene";
 import {tags as t} from "@lezer/highlight";
 import helloWorld from "./scenes/3-hello-world/hello-world?scene";
-import goroutines from "./scenes/5-goroutines/goroutines?scene";
 import channels from "./scenes/6-channels/channels?scene";
 import bufferedChannels from "./scenes/8-buffered-channels/buffered-channels?scene";
 import intro from "./scenes/1-intro/intro?scene";
@@ -19,6 +18,7 @@ import closeChannel from "./scenes/11-close-channel/close-channel?scene";
 import channelsBlocking from "./scenes/7-channels/channels-blocking?scene";
 import bufferedChannelsExample from "./scenes/8-1-buffered-channels-example/buffered-channels-example?scene";
 import channelTimeout from "./scenes/10-1-channel-select-timeout/channel-timeout?scene";
+import end from "./scenes/12-end/end?scene";
 
 const MyStyle = HighlightStyle.define([
     {tag: [t.name, t.deleted, t.character, t.macroName], color: '#c0caf5'},
@@ -62,7 +62,8 @@ export default makeProject({
         channelDirections,
         channelSelect,
         channelTimeout,
-        closeChannel
+        closeChannel,
+        end
     ],
     audio: audio
 });
